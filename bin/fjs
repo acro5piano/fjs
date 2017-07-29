@@ -1,0 +1,53 @@
+#!/usr/bin/env node
+
+const fuzzy = require('fuzzy')
+
+const stdin = process.openStdin();
+
+const rl = require('readline').createInterface({
+  input: process.stdin,
+  output: process.stdout
+})
+
+function clear () {
+  return process.stdout.write('\033c');
+}
+
+function draw (input, list) {
+  clear()
+  let currentList = fuzzy.filter(input, list).map(el => el.string).join('\n')
+  process.stdout.write('\r> ' + input + '\n' + currentList + '\n');
+}
+
+function main () {
+  const list = ['baconing', 'narwhal', 'a mighty bear canoe'];
+  let input = ''
+
+  draw(input, list)
+  stdin.on('keypress', function (chunk, key) {
+    if (! key) {
+      return
+    }
+
+    input += chunk
+
+    if (key.ctrl && key.name === 'c') {
+      process.exit()
+    }
+
+    if ((key.ctrl && key.name === 'h') || key.name === 'backspace') {
+      input = input.slice(0, -2)
+    }
+
+    if (key.name === 'return') {
+      process.stdout.write('aaaa');
+      process.exit()
+    }
+
+    draw(input, list)
+  })
+}
+
+main()
+
+// vim:set ft=js

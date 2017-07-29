@@ -1,0 +1,23 @@
+{
+  "name": "fjs",
+  "version": "1.0.0",
+  "description": "[developing] grep interactively with the power of fuzzy-search",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/acro5piano/fjs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/acro5piano/fjs/issues"
+  },
+  "homepage": "https://github.com/acro5piano/fjs#readme",
+  "dependencies": {
+    "fuzzy": "^0.1.3"
+  }
+}
